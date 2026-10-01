@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 public class Address extends AbstractEntity{
     /*@Id
     @GeneratedValue*/
-    private Integer id;
+    //private Integer id;
     private String street;
     private Integer zipCode;
     private String city;

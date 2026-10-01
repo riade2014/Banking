@@ -23,7 +23,7 @@ import java.util.List;
 public class User extends AbstractEntity implements UserDetails {
     /*@Id
     @GeneratedValue*/ //genere automatiquement les id
-    private Integer id;
+    //private Integer id;
     private String firstname;
     private String lastname;
     @Column(unique = true)
@@ -34,7 +34,7 @@ public class User extends AbstractEntity implements UserDetails {
     private Address address;
     @OneToMany(mappedBy="user")
     private List<Transaction> transactions;
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="user",cascade = {CascadeType.ALL})
     private List<Contact> contacts;
     @OneToOne
     private Account account;

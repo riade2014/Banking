@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/db_banking
-    username: postgres
-    password: pgsql
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/db_banking}
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:pgsql}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: true
@@ -16,4 +16,8 @@ spring:
           sharedCache:
             mode: UNSPECIFIED
 server:
-  port: 8082
+  port: ${PORT:8082}
+springdoc:
+  default-produces-media-type: application/json
+jwt:
+  secret: ${JWT_SECRET:secret}

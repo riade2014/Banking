@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Account extends AbstractEntity {
     /*@Id
     @GeneratedValue*/
-    private Integer id;
+    //private Integer id;
     private String iban;
     private LocalDateTime creatingDate;
     private LocalDateTime lastUpdated;

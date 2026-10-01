@@ -3,6 +3,7 @@ package com.sylviane.banking.config;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,9 @@ import java.util.function.Function;
 
 @Service
 public class JwtUtils {
-    private final String jwtSigningKey = "secret";
+    @Value("${jwt.secret}")
+    private String jwtSigningKey;
+    //private final String jwtSigningKey = "SECRET";
 
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);

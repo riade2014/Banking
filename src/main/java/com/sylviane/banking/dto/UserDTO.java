@@ -31,6 +31,8 @@ public class UserDTO {
     @NotBlank(message = "le mot de passe ne doit pas contenir des blancs (' ')")
     @Size(min = 8, max = 16,message = "le mot de passe doit contenir entre 8 et 16 caracteres")
     private String password;
+    private String iban;
+    private boolean active;
     public static UserDTO fromEntity(User user){
         //null check
         //verifie si l'objet est null ou non pour eviter les pointeurs nulls dans l'application
@@ -40,6 +42,8 @@ public class UserDTO {
                 .lastname(user.getLastname())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .iban(user.getAccount()== null ? "" : user.getAccount().getIban())
+                .active(user.isActive())
                 .build();
     }
 

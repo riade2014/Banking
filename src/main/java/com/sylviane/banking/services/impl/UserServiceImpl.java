@@ -5,6 +5,7 @@ import com.sylviane.banking.controllers.AuthenticationRequest;
 import com.sylviane.banking.dto.AccountDTO;
 import com.sylviane.banking.dto.AuthenticationResponse;
 import com.sylviane.banking.dto.UserDTO;
+import com.sylviane.banking.models.Account;
 import com.sylviane.banking.models.Role;
 import com.sylviane.banking.models.User;
 import com.sylviane.banking.repository.RoleRepository;
@@ -79,13 +80,21 @@ public class UserServiceImpl implements UserService {
         //user.setActive(true);
         //repository.save(user);
         // on crée un compte bancaire pour cette utilisateur
-        AccountDTO account = AccountDTO.builder()
-                .user(UserDTO.fromEntity(user))
-                .build();
-        accountService.save(account);
+        if(user.getAccount() == null){
+            AccountDTO account = AccountDTO.builder()
+                    .user(UserDTO.fromEntity(user))
+                    .build();
+            //accountService.save(account);
+            var saveAccount= accountService.save(account);
+
+            user.setAccount(
+                    Account.builder()
+                            .id(saveAccount)
+                            .build()
+            );
+        }
         user.setActive(true);
         repository.save(user);
-        //return user.getId_user();
         return user.getId();
     }
 

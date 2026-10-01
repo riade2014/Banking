@@ -2,15 +2,18 @@ package com.sylviane.banking.controllers;
 
 import com.sylviane.banking.dto.AddressDTO;
 import com.sylviane.banking.services.AddressService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 4800, allowCredentials = "false")//permet de donner l'acces au frontend
 @RestController
 @RequestMapping("/adresses")
 @RequiredArgsConstructor
+@Tag(name = "address")
 public class AddressController {
     private final AddressService service;
 
