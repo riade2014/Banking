@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 4800, allowCredentials = "false")//permet de donner l'acces au frontend
+@CrossOrigin(origins = "*", allowedHeaders = "*")//permet de donner l'acces au frontend
 @RestController
 @RequestMapping("/adresses")
 @RequiredArgsConstructor

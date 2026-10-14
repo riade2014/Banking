@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/db_banking}
+    url: ${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:db_banking}}
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:pgsql}
     driver-class-name: org.postgresql.Driver
@@ -19,5 +19,8 @@ server:
   port: ${PORT:8082}
 springdoc:
   default-produces-media-type: application/json
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}
 jwt:
   secret: ${JWT_SECRET:secret}
